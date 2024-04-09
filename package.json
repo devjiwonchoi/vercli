@@ -1,5 +1,10 @@
 {
   "name": "vercli",
   "version": "0.0.0",
-  "license": "MIT"
+  "description": "Versatile CLI",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.4"
+  },
+  "packageManager": "pnpm@8.15.4"
 }
