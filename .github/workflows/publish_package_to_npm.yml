@@ -1,0 +1,31 @@
+name: Publish Package to NPM
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Publish to NPM
+        run: |
+          npm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}" # pnpm config set is broken
+          pnpm publish --no-git-checks
+        env:
+          # setting the "npm_config_//registry.npmjs.org/:_authToken" env variable directly doesn't work.
+          # probably "pnpm release" doesn't pass auth tokens to child processes
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}

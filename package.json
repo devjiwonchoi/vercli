@@ -1,5 +1,32 @@
 {
   "name": "vercli",
   "version": "0.0.0",
-  "license": "MIT"
+  "description": "Versatile CLI",
+  "license": "MIT",
+  "scripts": {
+    "build": "bunchee"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.4.13",
+    "@swc/jest": "^0.2.36",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "bunchee": "^5.1.2",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.4"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": "@swc/jest"
+    },
+    "testEnvironment": "node",
+    "testTimeout": 10000,
+    "verbose": true
+  },
+  "packageManager": "pnpm@8.15.6"
 }
